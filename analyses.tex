@@ -1,0 +1,14 @@
+\section{Analyses}
+To extract musculoskeletal loads and muscle usage we performed extensive processing of the data collected in the experiment. We applied the typical processing to prepare the motion capture data for biomechanical simulation and user performance modeling as described in the previous works within HCI as well as in biomechanics \cite{kontaxis2009framework,bachynskyi_performance_2015}.
+The processing consisted of 3 stages: \\
+\textbf{Preprocess} the data for biomechanical simulation and performance modeling by removing occlusions and reflections, interpolation of missing regions and removing noise by Kalman filter.\\
+\textbf{Extract user performance} data, integrate it with quantitative measures and segment the data into timeperiods of individual tasks.\\
+\textbf{Perform biomechanical simulation} on the data to extract physiological loads and muscle recruitment. As described in previous work \cite{bachynskyi_performance_2015,opensim}, biomechanical simulation consists of multiple pipelined steps: 
+\begin{itemize}
+\item \textbf{Model scaling} adjusts model segments size and mass distribution to match the parameters of a subject,
+\item \textbf{Inverse Kinematics} computes \textbf{generalized coordinates} at all joints for each timeframe,
+\item \textbf{Inverse Dynamics} computes \textbf{moments at joints} based on the generalized coordinates, and
+\item \textbf{Static Optimisation} resolves moments at joints to the moments induced by individual muscles, \textbf{muscle forces and activations}, assuming movement optimality with respect to muscular strain.
+\end{itemize}
+To run biomechanical simulation we used OpenSim software \cite{opensim} and state-of-the-art musculoskeletal model of the full body\footnote{\url{http://www.musculographics.com/html/products/fullbodymodel.html} -- September 25th, 2015} \cite{holzbaur2005model}. The outputs of biomechanical simulation have been validated in multiple previous works against direct measurements of joint angles, estimations of joint moments or electromyography recordings \cite{bachynskyi2014motion}. The biomechanical simulation provides moments for 109 joints of the full body. Due to computational reasons muscle forces and activations were computed for 148 muscles of the body part above pelvis.\\
+\textbf{Perform analysis} and statistical hypothesis testing of the dataset. We use MATLAB, R, Microsoft Excel and visualizations in MovExp \cite{palmas2014movexp} to analyze the data and inspect the results. We start by analysis of visualizations to identify patterns within the dataset. Then we investigate statistical distributions of variables and visually inspect them for normality. We perform Shapiro-Wilk normality tests to verify for a normal distribution of the data. If the data distribution is normal, we perform paired t-tests to identify statistical effects, otherwise Wilcoxon signed-rank tests are used.

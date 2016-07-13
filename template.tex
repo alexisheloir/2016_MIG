@@ -1,0 +1,106 @@
+%%% template.tex
+%%%
+%%% This LaTeX source document can be used as the basis for your technical
+%%% paper or abstract.
+
+%%% The parameter to the ``documentclass'' command is very important.
+%%% - use ``review'' for content submitted for review.
+%%% - use ``preprint'' for accepted content you are making available.
+%%% - use ``tog'' for technical papers accepted to the TOG journal and
+%%%   for presentation at the SIGGRAPH or SIGGRAPH Asia conference.
+%%% - use ``conference'' for final content accepted to a sponsored event
+%%%   (hint: If you don't know, you should use ``conference.'')
+
+\documentclass[tog]{acmsiggraph}
+
+\usepackage{balance}  % to better equalize the last page
+\usepackage{graphics} % for EPS, load graphicx instead
+\usepackage{times}    % comment if you want LaTeX's default font
+\usepackage{url}      % llt: nicely formatted URL
+
+\usepackage{todonotes} % add notes in th paper
+
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
+\makeatother
+\urlstyle{leo}
+
+%%% Make the ``BibTeX'' word pretty...
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+%%% Used by the ``review'' variation; the online ID will be printed on 
+%%% every page of the content.
+
+\TOGonlineid{45678}
+
+%%% Used by the ``preprint'' variation.
+
+\TOGvolume{0}
+\TOGnumber{0}
+
+\title{Introducing postural variability improves the distribution of muscular loads during mid-air gestural interaction}
+
+\author{
+  Anonymous N. Hidden\thanks{e-mail:anonymous@cs.somewhere.edu}\\Department, Institution, location}
+\pdfauthor{Anonymous N. Hidden}
+
+\keywords{
+	Mid-air interaction; 3D interaction; Gorilla arm; comparative study; physical ergonomics; user performance; optical motion capture; biomechanical simulation.
+}
+
+\begin{document}
+
+%%% This is the ``teaser'' command, which puts an figure, centered, below 
+%%% the title and author information, and above the body of the content.
+
+\teaser{
+%\begin{figure}%[tbh]
+\centering
+\includegraphics[width=\textwidth]{img/moneyshot}
+\label{fig:moneyshot}
+\caption{This paper analyses the effect of posture variability of upper body on muscular fatigue and the casually called ''Gorilla arm´´ effect. Motion capture-based biomechanical simulation was used to understand differences in joint loads, muscle forces and activations. This figure shows the two conditions which we studied: in static posture the load is all the time concentrated on the same muscles and they quickly get fatigued, in variable posture the loaded muscles change over time which gives more time for them to recover.}
+%\end{figure}
+} 
+
+\maketitle
+
+\begin{abstract}
+
+
+Only time will tell if motion-controlled systems are the future of gaming and other industries and if mid-air gestureal input will eventually offering a more intuitive way to play games, learn certain skills and more.
+
+If mid-air gestural input is promised to become a widespread input modality, it is necessary to assess its ergonomics and propose design guidelines which will guarantee a safe usage of mid-air gestures in the long run. This paper presents how muscular fatigue and the resulting ``Gorilla arm'' effect during mid-air interaction can be mitigated by introducing additional variability of the whole upper body posture. This paper also introduces an indirect pervasive strategy leveraging head-tracking and parallax effect encouraging postural changes during the interaction. A user study involving 30 subjects validates the setup through quantitative analysis and qualitative analysis. A quantitative analysis was conducted on data obtained using an optical motion capture setup together with biomechanical simulation. A qualitative analysis was conducted through Questionnaires. Both questionnaires and musculoskeletal loads data support our hypothesis and shows a statistically significant 15-25\% decrease in average muscle loads on the anterior and medial deltoids and biceps long  in the modified condition comparing to the baseline.
+\end{abstract}
+
+\begin{CRcatlist}
+  \CRcat{H.5.2.}{Information Interfaces and Presentation (e.g. HCI)}{User Interfaces};
+%  \CRcat{I.X.X}{Animation}{Inut method}{Radiosity};
+\end{CRcatlist}
+
+\keywordlist
+
+%% Required for all content. 
+
+\copyrightspace
+
+\input{introductionAndRelatedWork} % easier to collaborate when paper is split between multiple files
+
+\input{experiment}
+
+\input{analyses}
+
+\input{results}
+
+\input{discussion}
+
+%\section*{Acknowledgements}
+%To Robert, for all the bagels.
+
+\bibliographystyle{acmsiggraph}
+\nocite{*}
+\bibliography{sample}
+\end{document}
